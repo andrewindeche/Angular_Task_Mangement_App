@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from "./navbar/navbar.component";
+import { Task, TasktableComponent } from './tasktable/tasktable.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [RouterOutlet, NavbarComponent, TasktableComponent]
 })
 export class AppComponent {
   title = 'taskmgtapp';
+  tasks: Task[] = [
+    { title: 'Task 1', description: 'Description 1', status: 'Done' },
+    { title: 'Task 2', description: 'Description 2', status: 'Pending' },
+    { title: 'Task 3', description: 'Description 3', status: 'In Progress' },
+  ];
 }
