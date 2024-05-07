@@ -1,0 +1,14 @@
+{
+    "title": [
+      { "id": 1, "title": "task1"}
+    ],
+    "description": [
+      { "id": 1, "body": "description1", "postId": 1 }
+    ],
+    "status": {
+      "name": "Done"
+    },
+    "action": [
+        { "id": 1, "action": "delete", "postId": 1 }
+      ]
+  }

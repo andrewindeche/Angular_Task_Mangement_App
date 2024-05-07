@@ -1,0 +1,26 @@
+form{
+  border: 2px solid #800080;
+}
+mat-form-field {
+    width: 100%;
+  }
+.mat-mdc-button{
+  padding: 2em;
+  border: 5px solid red;
+  }
+.mat-mdc-button:hover{
+    background-color:blue;
+    border: 5px solid green;
+    font-weight: bolder;
+  }
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.taskdetailheader{
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+  }

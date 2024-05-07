@@ -9,6 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 | 2.Angular              | Type Script-Based FrontEnd Framework| [Typescript];|
 | 3.Karma/Jasmine        | Testing framework| [Test]; [Test Cases];|
 | 4.Figma                | Interface Design| [Prototype]; [Wireframe];|
+| 4.json server          | Backend server| [Backend]; [Server];|
 
 <p>The ReadME documents details configuration of an Angular Project for a task management application.</p>
 
@@ -18,6 +19,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Json server
+Run `json-server --watch db.json` for json server. Navigate to `http://localhost:3000/`
 
 ## Code scaffolding
 
