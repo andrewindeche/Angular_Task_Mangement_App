@@ -1,7 +1,14 @@
 table {
     width: 100%;
+    border: 2px solid #800080;
   }
   
   th.mat-header-cell, td.mat-cell {
     text-align: left;
+  }
+  
+  th {
+    font-weight: bolder;
+    color: #800080;
+    font-size: 18px;
   }
