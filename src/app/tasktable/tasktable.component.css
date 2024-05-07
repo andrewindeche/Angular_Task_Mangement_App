@@ -12,3 +12,8 @@ table {
     color: #800080;
     font-size: 18px;
   }
+
+  .mat-mdc-icon-button:hover{
+    background-color:#800080;
+    color:white;
+  }
