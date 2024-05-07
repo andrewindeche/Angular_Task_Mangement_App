@@ -9,6 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 | 2.Angular              | Type Script-Based FrontEnd Framework| [Typescript];|
 | 3.Karma/Jasmine        | Testing framework| [Test]; [Test Cases];|
 | 4.Figma                | Interface Design| [Prototype]; [Wireframe];|
+| 4.json server          | Backend server| [Backend]; [Server];|
 
 <p>The ReadME documents details configuration of an Angular Project for a task management application.</p>
 
