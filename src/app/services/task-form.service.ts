@@ -17,8 +17,8 @@ export class TaskFormService {
 
   loadTask(form: FormGroup): void {
     const taskData = {
-      title: 'Review project',
-      description: 'Review the final integration of the project modules.',
+      title: 'Create/Edit title',
+      description: 'Create/Edit task description',
       isComplete: false
     };
     form.setValue(taskData);
