@@ -7,3 +7,8 @@ table {
     text-align: left;
   }
   
+  th {
+    font-weight: bolder;
+    color: #800080;
+    font-size: 18px;
+  }
