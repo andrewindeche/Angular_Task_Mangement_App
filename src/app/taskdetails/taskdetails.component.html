@@ -1,0 +1,20 @@
+<mat-card>
+    <h3 class="taskdetailheader">Task Detail View</h3>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+  
+      <mat-checkbox formControlName="isComplete">Mark as complete</mat-checkbox>
+  
+      <div class="actions">
+        <button mat-button mat-raised-button color="primary" type="submit">Save</button>
+      </div>
+    </form>
+  </mat-card>
