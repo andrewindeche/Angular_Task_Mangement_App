@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   constructor(private dbService: DbService) {}
 
   ngOnInit() {
-    this.dbService.getPosts().subscribe({
+    this.dbService.getTasks().subscribe({
       next: (data) => this.tasks = data,
       error: (err) => console.error('There was an error: ', err)
     });

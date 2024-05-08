@@ -3,12 +3,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-
-export interface Task {
-  title: string;
-  description: string;
-  status: string;
-}
+import { TaskFormService, Task } from '../services/task-form.service';
 
 @Component({
   selector: 'app-tasktable',
@@ -22,17 +17,14 @@ export class TasktableComponent implements OnInit {
   dataSource: Task[] = [];
   displayedColumns: string[] = ['title', 'description', 'status', 'actions'];
 
-  constructor() { }
+  constructor(private taskFormService: TaskFormService) { }
 
   ngOnInit(): void {
-    this.initializeTasks();
+    this.taskFormService.getTasks().subscribe(tasks => {
+      this.dataSource = tasks.map(task => ({
+        ...task,
+        status: task.isComplete ? 'Done' : 'Pending'
+      }));
+    });
   }
-  private initializeTasks() {
-    this.dataSource = [
-      { title: 'Task 1', description: 'Description 1', status: 'Done' },
-      { title: 'Task 2', description: 'Description 2', status: 'Pending' },
-      { title: 'Task 3', description: 'Description 3', status: 'In Progress' },
-    ];
-  }
-
 }

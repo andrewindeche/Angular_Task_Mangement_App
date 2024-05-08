@@ -3,7 +3,7 @@
   font-weight: bolder;
 }
 .addtask button:hover{
-  background-color:#FFBF00;
+  background-color:#800080;
   border: 2px solid green;
 }
 table {

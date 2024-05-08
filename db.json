@@ -1,31 +1,22 @@
 {
-  "posts": [
+  "tasks": [
     {
       "id": 1,
       "title": "task1",
       "description": "description1",
-      "status": "Done",
-      "actions": [
-        { "action": "delete" }
-      ]
+      "status": "Done"
     },
     {
       "id": 2,
       "title": "task2",
       "description": "description2",
-      "status": "Pending",
-      "actions": [
-        { "action": "delete" }
-      ]
+      "status": "Pending"
     },
     {
       "id": 3,
       "title": "task3",
       "description": "description3",
-      "status": "In Progress",
-      "actions": [
-        { "action": "delete" }
-      ]
+      "status": "In Progress"
     }
   ]
 }

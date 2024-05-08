@@ -6,10 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DbService {
-  private baseURL = 'http://localhost:3000/posts';
+  private baseURL = 'http://localhost:3000';
   
   constructor(private http: HttpClient) { }
-  getPosts(): Observable<any> {
-    return this.http.get(`${this.baseURL}`);
+  getTasks(): Observable<any> {
+    return this.http.get(`${this.baseURL}/tasks`);
+  }
+  getTaskById(id: number): Observable<any> {
+    return this.http.get(`${this.baseURL}/tasks/${id}`);
   }
 }
