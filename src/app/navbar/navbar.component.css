@@ -2,3 +2,8 @@
 .secondarytext{
     color: blueviolet;
 }
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .navheader, .secondarytext {
+        font-size: 12px;
+    }
+ }
