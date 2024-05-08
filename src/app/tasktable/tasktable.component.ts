@@ -3,7 +3,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { TaskFormService, Task } from '../services/task-form.service';
+import { TaskFormService } from '../services/task-form.service';
+import { Task } from '../task.model'
 
 @Component({
   selector: 'app-tasktable',

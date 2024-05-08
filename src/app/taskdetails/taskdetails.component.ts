@@ -8,8 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { FormGroup } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TaskFormService } from '../services/task-form.service';
-import { RouterModule } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { DbService } from '../services/db.service';
+import { RouterModule,ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-taskdetails',
@@ -29,13 +29,37 @@ import { ActivatedRoute } from '@angular/router';
 export class TaskdetailsComponent implements OnInit {
   id: number | undefined;
   taskForm!: FormGroup;
+  isNewTask: boolean = true
 
-  constructor(private taskFormService: TaskFormService, private route: ActivatedRoute) {}
+  constructor(
+    private taskFormService: TaskFormService,
+    private dbService: DbService, 
+    private router: Router,
+    private route: ActivatedRoute 
+    ) {}
   ngOnInit(): void {
     this.taskForm = this.taskFormService.initForm();
-    this.taskFormService.loadTask(this.taskForm);
+    const id = this.route.snapshot.paramMap.get('id'); 
+    if (id) {
+      this.isNewTask = false;
+      this.dbService.getTaskById(+id).subscribe(task => {
+        this.taskForm.setValue({
+          title: task.title,
+          description: task.description,
+          isComplete: task.isComplete
+        });
+      });
+    }
   }
   onSubmit(): void {
     this.taskFormService.submitForm(this.taskForm);
+    this.taskFormService.submitForm(this.taskForm)
+      .subscribe({
+        next: (result) => {
+          console.log('Task added', result);
+          this.router.navigate(['/tasks']); 
+        },
+        error: (error) => console.error('There was an error!', error)
+      });
   }
 }

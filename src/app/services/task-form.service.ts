@@ -1,48 +1,36 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
-
-export interface Task {
-  title: string;
-  description: string;
-  isComplete: boolean;
-}
+import { Task } from '../task.model';
+import { DbService } from './db.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskFormService {
-  private tasks = new BehaviorSubject<Task[]>([]);
-
-  constructor(private fb: FormBuilder) { }
+  
+  constructor(private fb: FormBuilder, private dbService: DbService) { }
   initForm(): FormGroup {
     return this.fb.group({
-      title: ['', Validators.required],
-      description: [''],
+      title: ['Create/Edit title', Validators.required],
+      description: ['Create/Edit task description'],
       isComplete: [false]
     });
   }
 
-  loadTask(form: FormGroup): void {
-    const taskData = {
-      title: 'Create/Edit title',
-      description: 'Create/Edit task description',
-      isComplete: false
-    };
-    form.setValue(taskData);
+  loadTask(id: number): Observable<Task> {
+    return this.dbService.getTaskById(id);
   }
 
-  submitForm(form: FormGroup): void {
+  submitForm(form: FormGroup):Observable<Task> {
     if (form.valid) {
-      const newTask: Task = form.value;
-      const updatedTasks = [...this.tasks.value, newTask];
-      this.tasks.next(updatedTasks);
-      console.log('Form Submission', form.value);
+      const task: Task = form.value;
+      return this.dbService.addTask(task);
     } else {
-      console.error('Form is not valid!');
+      throw new Error('Form is not valid!');
     }
   }
-  getTasks() {
-    return this.tasks.asObservable();
+  getTasks(): Observable<Task[]>  {
+    return this.dbService.getTasks();
   }
 }

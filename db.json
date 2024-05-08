@@ -3,8 +3,7 @@
     {
       "id": 1,
       "title": "task1",
-      "description": "description1",
-      "status": "Done"
+      "description": "description1"
     },
     {
       "id": 2,
@@ -17,6 +16,12 @@
       "title": "task3",
       "description": "description3",
       "status": "In Progress"
+    },
+    {
+      "id": "66a8",
+      "title": "Sample task",
+      "description": "This is a sample task",
+      "isComplete": true
     }
   ]
 }
