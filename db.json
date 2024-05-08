@@ -1,14 +1,31 @@
 {
-    "title": [
-      { "id": 1, "title": "task1"}
-    ],
-    "description": [
-      { "id": 1, "body": "description1", "postId": 1 }
-    ],
-    "status": {
-      "name": "Done"
-    },
-    "action": [
-        { "id": 1, "action": "delete", "postId": 1 }
+  "posts": [
+    {
+      "id": 1,
+      "title": "task1",
+      "description": "description1",
+      "status": "Done",
+      "actions": [
+        { "action": "delete" }
       ]
-  }
+    },
+    {
+      "id": 2,
+      "title": "task2",
+      "description": "description2",
+      "status": "Pending",
+      "actions": [
+        { "action": "delete" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "task3",
+      "description": "description3",
+      "status": "In Progress",
+      "actions": [
+        { "action": "delete" }
+      ]
+    }
+  ]
+}

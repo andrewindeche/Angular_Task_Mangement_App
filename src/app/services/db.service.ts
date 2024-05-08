@@ -6,9 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DbService {
-  private baseURL = 'http://localhost:3000';
+  private baseURL = 'http://localhost:3000/posts';
+  
   constructor(private http: HttpClient) { }
   getPosts(): Observable<any> {
-    return this.http.get(`${this.baseURL}/posts`);
+    return this.http.get(`${this.baseURL}`);
   }
 }
