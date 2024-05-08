@@ -24,6 +24,14 @@ export class TasktableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.initializeTasks();
+  }
+  private initializeTasks() {
+    this.dataSource = [
+      { title: 'Task 1', description: 'Description 1', status: 'Done' },
+      { title: 'Task 2', description: 'Description 2', status: 'Pending' },
+      { title: 'Task 3', description: 'Description 3', status: 'In Progress' },
+    ];
   }
 
 }
