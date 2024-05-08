@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 export interface Task {
   title: string;
@@ -12,7 +13,7 @@ export interface Task {
 @Component({
   selector: 'app-tasktable',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, MatIconModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './tasktable.component.html',
   styleUrl: './tasktable.component.css'
 })

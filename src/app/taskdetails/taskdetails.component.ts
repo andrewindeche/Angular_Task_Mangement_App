@@ -8,6 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { FormGroup } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TaskFormService } from '../services/task-form.service';
+import { RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-taskdetails',
@@ -18,15 +20,17 @@ import { TaskFormService } from '../services/task-form.service';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    RouterModule 
   ],
   templateUrl: './taskdetails.component.html',
   styleUrl: './taskdetails.component.css'
 })
 export class TaskdetailsComponent implements OnInit {
+  id: number | undefined;
   taskForm!: FormGroup;
 
-  constructor(private taskFormService: TaskFormService) {}
+  constructor(private taskFormService: TaskFormService, private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.taskForm = this.taskFormService.initForm();
     this.taskFormService.loadTask(this.taskForm);
