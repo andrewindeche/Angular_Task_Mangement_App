@@ -1,3 +1,11 @@
+.addtask button{
+  margin: 20px;
+  font-weight: bolder;
+}
+.addtask button:hover{
+  background-color:#FFBF00;
+  border: 2px solid green;
+}
 table {
     width: 100%;
     border: 2px solid #800080;
