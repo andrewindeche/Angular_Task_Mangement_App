@@ -14,7 +14,8 @@ import { RouterModule,ActivatedRoute,Router } from '@angular/router';
 @Component({
   selector: 'app-taskdetails',
   standalone: true,
-  imports: [ReactiveFormsModule, 
+  imports: [
+    ReactiveFormsModule, 
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -52,14 +53,29 @@ export class TaskdetailsComponent implements OnInit {
     }
   }
   onSubmit(): void {
-    this.taskFormService.submitForm(this.taskForm);
-    this.taskFormService.submitForm(this.taskForm)
-      .subscribe({
-        next: (result) => {
-          console.log('Task added', result);
-          this.router.navigate(['/tasks']); 
-        },
-        error: (error) => console.error('There was an error!', error)
-      });
+    if (this.taskForm.valid) {
+      if (this.isNewTask) {
+        this.dbService.addTask(this.taskForm.value).subscribe({
+          next: (result) => {
+            console.log('Task added', result);
+            this.router.navigate(['/tasks']);
+          },
+          error: (error) => console.error('There was an error!', error)
+        });
+      } else {
+        const id = this.route.snapshot.paramMap.get('id');
+        if (id) {
+          this.dbService.updateTask(+id, this.taskForm.value).subscribe({
+            next: (result) => {
+              console.log('Task updated', result);
+              this.router.navigate(['/tasks']);
+            },
+            error: (error) => console.error('There was an error!', error)
+          });
+        }
+      }
+    } else {
+      console.error('Form is not valid!');
+    }
   }
 }

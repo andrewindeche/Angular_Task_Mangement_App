@@ -16,12 +16,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## <h1> Description</h1>
 <p>The Aim of the project is to build an Angular application that allows users to view tasks in a table format, add new tasks, edit existing tasks, and delete tasks</p>
 
+## Json server
+Run `json-server --watch db.json` for json server so as to open DB before starting ng app . Navigate to `http://localhost:3000/`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Json server
-Run `json-server --watch db.json` for json server. Navigate to `http://localhost:3000/`
 
 ## Code scaffolding
 
@@ -46,9 +47,6 @@ Run`ng lint` to execute linting of the angular application. The dependency can b
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Figma Design
-
 
 ## Authors
 
