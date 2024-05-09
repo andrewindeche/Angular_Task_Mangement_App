@@ -44,19 +44,16 @@ export class TaskdetailsComponent implements OnInit {
       this.taskForm = this.taskFormService.initForm();
       const taskId = this.route.snapshot.paramMap.get('id');
       if (taskId) {
-        const numericId = isNaN(Number(taskId)) ? undefined : Number(taskId);
-        if (numericId !== undefined) {
-          this.isNewTask = false;
-          this.dbService.getTaskById(taskId).subscribe((task) => {
-            this.taskForm.setValue({
+        this.dbService.getTaskById(taskId).subscribe({
+          next: (task) => {
+            this.taskForm.patchValue({
               title: task.title,
               description: task.description,
               isComplete: task.isComplete
             });
-          });
-        } else {
-          console.error('Invalid task ID:', taskId);
-        }
+          },
+          error: (err) => console.error('Failed to fetch task', err)
+        });
       }
     }
     
