@@ -29,12 +29,6 @@
       "title": "Another Task",
       "description": "I have added another one",
       "isComplete": false
-    },
-    {
-      "id": "4d79",
-      "title": "Create/Edit title",
-      "description": "Create/Edit task description",
-      "isComplete": false
     }
   ]
 }

@@ -7,11 +7,12 @@ import { RouterModule } from '@angular/router';
 import { TaskFormService } from '../services/task-form.service';
 import { Task } from '../task.model';
 import { DbService } from '../services/db.service';
+import { StatuscolorPipe } from '../pipes/statuscolor.pipe';
 
 @Component({
   selector: 'app-tasktable',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule,CommonModule,],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule,CommonModule,StatuscolorPipe],
   templateUrl: './tasktable.component.html',
   styleUrl: './tasktable.component.css'
 })
