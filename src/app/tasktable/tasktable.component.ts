@@ -34,7 +34,10 @@ export class TasktableComponent implements OnInit {
   
   loadTasks(): void {
     this.dbService.getTasks().subscribe((tasks) => {
-      this.dataSource = tasks;
+      this.dataSource = tasks.map(task => ({
+        ...task,
+        status: task.isComplete ? 'Done' : 'Pending'
+      }));
     });
   }
   deleteTask(id: number): void {

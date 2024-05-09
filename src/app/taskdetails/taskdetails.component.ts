@@ -62,7 +62,10 @@ export class TaskdetailsComponent implements OnInit {
     
   onSubmit(): void {
     if (this.taskForm.valid) {
-      const taskData = this.taskForm.value;
+      const taskData = {
+        ...this.taskForm.value,
+        isComplete: this.taskForm.value.isComplete
+      };
       const taskId = this.route.snapshot.paramMap.get('id');
       if (taskId) {
         this.dbService.updateTask(+taskId, taskData).subscribe(() => {
