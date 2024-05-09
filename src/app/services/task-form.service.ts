@@ -18,8 +18,8 @@ export class TaskFormService {
     });
   }
 
-  loadTask(id: number): Observable<Task> {
-    return this.dbService.getTaskById(id);
+  loadTask(taskId: string): Observable<Task> {
+    return this.dbService.getTaskById(taskId);
   }
 
   submitForm(form: FormGroup):Observable<Task> {

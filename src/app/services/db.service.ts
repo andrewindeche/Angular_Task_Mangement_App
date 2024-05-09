@@ -13,8 +13,8 @@ export class DbService {
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.baseURL);
   }
-  getTaskById(id: number): Observable<Task> {
-    return this.http.get<Task>(`${this.baseURL}/${id}`);
+  getTaskById(id: string): Observable<Task> {
+    return this.http.get<Task>(`${this.baseURL}/tasks/${id}`);
   }
 
   addTask(task: Task): Observable<Task> {

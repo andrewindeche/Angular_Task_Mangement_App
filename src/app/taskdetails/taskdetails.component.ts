@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,6 +22,7 @@ import { RouterModule,ActivatedRoute,Router } from '@angular/router';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
+    CommonModule,
     MatCheckboxModule,
     RouterModule 
   ],
@@ -38,44 +40,41 @@ export class TaskdetailsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute 
     ) {}
-  ngOnInit(): void {
-    this.taskForm = this.taskFormService.initForm();
-    const id = this.route.snapshot.paramMap.get('id'); 
-    if (id) {
-      this.isNewTask = false;
-      this.dbService.getTaskById(+id).subscribe(task => {
-        this.taskForm.setValue({
-          title: task.title,
-          description: task.description,
-          isComplete: task.isComplete
-        });
-      });
-    }
-  }
-  onSubmit(): void {
-    if (this.taskForm.valid) {
-      if (this.isNewTask) {
-        this.dbService.addTask(this.taskForm.value).subscribe({
-          next: (result) => {
-            console.log('Task added', result);
-            this.router.navigate(['/tasks']);
-          },
-          error: (error) => console.error('There was an error!', error)
-        });
-      } else {
-        const id = this.route.snapshot.paramMap.get('id');
-        if (id) {
-          this.dbService.updateTask(+id, this.taskForm.value).subscribe({
-            next: (result) => {
-              console.log('Task updated', result);
-              this.router.navigate(['/tasks']);
-            },
-            error: (error) => console.error('There was an error!', error)
+    ngOnInit(): void {
+      this.taskForm = this.taskFormService.initForm();
+      const taskId = this.route.snapshot.paramMap.get('id');
+      if (taskId) {
+        const numericId = isNaN(Number(taskId)) ? undefined : Number(taskId);
+        if (numericId !== undefined) {
+          this.isNewTask = false;
+          this.dbService.getTaskById(taskId).subscribe((task) => {
+            this.taskForm.setValue({
+              title: task.title,
+              description: task.description,
+              isComplete: task.isComplete
+            });
           });
+        } else {
+          console.error('Invalid task ID:', taskId);
         }
       }
+    }
+    
+  onSubmit(): void {
+    if (this.taskForm.valid) {
+      const taskData = this.taskForm.value;
+      const taskId = this.route.snapshot.paramMap.get('id');
+      if (taskId) {
+        this.dbService.updateTask(+taskId, taskData).subscribe(() => {
+          this.router.navigate(['/tasks']); 
+        });
+      } else {
+        this.dbService.addTask(taskData).subscribe(() => {
+          this.router.navigate(['/tasks']);
+        });
+      }
     } else {
-      console.error('Form is not valid!');
+      this.taskForm.markAllAsTouched();
     }
   }
 }

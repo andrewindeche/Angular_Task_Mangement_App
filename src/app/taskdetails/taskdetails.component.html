@@ -1,16 +1,21 @@
 <mat-card>
     <h3 class="taskdetailheader">Task Detail View</h3>
-    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="fill">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" novalidate>
+      <mat-form-field appearance="fill" [class.error]="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">
         <mat-label>Title</mat-label>
         <input matInput formControlName="title">
+        <mat-error *ngIf="taskForm.get('title')?.errors?.['required']">
+          Title is required.
+        </mat-error>
       </mat-form-field>
   
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" [class.error]="taskForm.get('description')?.invalid && taskForm.get('description')?.touched">
         <mat-label>Description</mat-label>
         <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="taskForm.get('description')?.errors?.['required']">
+          Description is required.
+        </mat-error>
       </mat-form-field>
-  
       <mat-checkbox formControlName="isComplete">Mark as complete</mat-checkbox>
   
       <div class="actions">

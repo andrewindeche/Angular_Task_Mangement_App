@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,7 +11,7 @@ import { DbService } from '../services/db.service';
 @Component({
   selector: 'app-tasktable',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, RouterModule,CommonModule,],
   templateUrl: './tasktable.component.html',
   styleUrl: './tasktable.component.css'
 })
