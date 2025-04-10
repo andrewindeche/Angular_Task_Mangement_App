@@ -42,9 +42,9 @@ export class TaskdetailsComponent implements OnInit {
     ) {}
     ngOnInit(): void {
       this.taskForm = this.taskFormService.initForm();
-      const taskId = this.route.snapshot.paramMap.get('id');
+      const taskId = Number(this.route.snapshot.paramMap.get('id'));
       if (taskId) {
-        this.dbService.getTaskById(taskId).subscribe({
+        this.dbService.getTaskById(taskId.toString()).subscribe({
           next: (task) => {
             this.taskForm.patchValue({
               title: task.title,
