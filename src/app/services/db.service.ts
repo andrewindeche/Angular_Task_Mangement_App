@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Task } from '../task.model'; 
 
 @Injectable({
@@ -22,6 +22,10 @@ export class DbService {
   }
 
   updateTask(id: number, task: Task): Observable<Task> {
+    if (!id || isNaN(id)) {
+      console.error('Invalid task ID');
+      return throwError(() => new Error('Invalid task ID'));
+    }
     return this.http.put<Task>(`${this.baseURL}/${id}`, task);
   }
 
