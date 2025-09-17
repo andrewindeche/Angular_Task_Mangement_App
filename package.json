@@ -25,7 +25,7 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/platform-server": "^17.3.0",
     "@angular/router": "^17.3.0",
-    "@angular/ssr": "^17.3.6",
+    "@angular/ssr": "^20.3.1",
     "express": "^4.21.2",
     "json-server": "^1.0.0-alpha.23",
     "rxjs": "~7.8.0",
